@@ -35,6 +35,9 @@ public class CalculoService {
         double diffSoma = numeros.stream().mapToDouble(num ->Math.pow(num - media,2)).sum();
         double desvioPadrao = Math.sqrt(diffSoma/count);
 
-        return new Calculo(count,mediana,media,desvioPadrao);
+        double valorMinimo = orgNumeros.get(0);
+        double valorMaximo = orgNumeros.get(count-1);
+
+        return new Calculo(count,mediana,media,desvioPadrao,valorMinimo,valorMaximo,soma);
     }
 }
