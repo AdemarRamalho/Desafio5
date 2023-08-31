@@ -20,7 +20,8 @@ public class CalculoController {
     @PostMapping("/calcular")
     public ResponseEntity<?> calculo (@RequestBody RequisicaoNumeros requisicao){
         if(requisicao.getNumeros()==null || requisicao.getNumeros().size()<20){
-            throw new IllegalArgumentException("Tem que inserir no minimo 20 numerros");
+            String errorMessage = "tem que inserir no minimo 20 números";
+            return ResponseEntity.badRequest().body(errorMessage);
         }
         Calculo calculo = calculoService.calcular(requisicao.getNumeros());
         return ResponseEntity.ok(calculo);
